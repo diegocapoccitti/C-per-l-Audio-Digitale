@@ -1,0 +1,81 @@
+{
+  "parameters": [
+    {
+      "type": "ParameterTypeNumber",
+      "index": 0,
+      "name": "delaytime",
+      "paramId": "delaytime",
+      "minimum": 1,
+      "maximum": 2000,
+      "exponent": 1,
+      "steps": 0,
+      "initialValue": 220,
+      "isEnum": false,
+      "enumValues": [],
+      "displayName": "",
+      "unit": "",
+      "order": 0,
+      "debug": false,
+      "visible": true,
+      "signalIndex": null,
+      "ioType": "IOTypeUndefined"
+    },
+    {
+      "type": "ParameterTypeNumber",
+      "index": 1,
+      "name": "feedback",
+      "paramId": "feedback",
+      "minimum": 0,
+      "maximum": 0.999,
+      "exponent": 1,
+      "steps": 0,
+      "initialValue": 0.5,
+      "isEnum": false,
+      "enumValues": [],
+      "displayName": "",
+      "unit": "",
+      "order": 0,
+      "debug": false,
+      "visible": true,
+      "signalIndex": null,
+      "ioType": "IOTypeUndefined"
+    }
+  ],
+  "numParameters": 2,
+  "numSignalInParameters": 0,
+  "numSignalOutParameters": 0,
+  "numInputChannels": 1,
+  "numOutputChannels": 1,
+  "numMidiInputPorts": 0,
+  "numMidiOutputPorts": 0,
+  "transportUsed": false,
+  "externalDataRefs": [],
+  "patcherSerial": 0,
+  "inports": [],
+  "outports": [],
+  "inlets": [
+    {
+      "type": "signal",
+      "index": 1,
+      "tag": "in1",
+      "meta": ""
+    }
+  ],
+  "outlets": [
+    {
+      "type": "signal",
+      "index": 1,
+      "tag": "out1",
+      "meta": ""
+    }
+  ],
+  "presetid": "rnbo",
+  "meta": {
+    "architecture": "x64",
+    "filename": "DelayRNBO.maxpat",
+    "rnboobjname": "rnbomatic",
+    "maxversion": "9.0.0",
+    "rnboversion": "1.3.3",
+    "name": "SimpleDelay"
+  }
+}

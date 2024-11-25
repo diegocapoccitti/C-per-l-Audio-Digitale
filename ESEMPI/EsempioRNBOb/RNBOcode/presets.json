@@ -1,0 +1,13 @@
+[
+  {
+    "name": "StereoDelay",
+    "preset": {
+      "delaytime": {
+        "value": 100
+      },
+      "feedback": {
+        "value": 0.33
+      }
+    }
+  }
+]

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="WVVtKh" name="ChannelStrip" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" defines="GENLIB_USE_FLOAT32=1">
+  <MAINGROUP id="AMxfhx" name="ChannelStrip">
+    <GROUP id="{E2059C98-4434-27BC-DDCB-FBE2BD33470A}" name="Source">
+      <FILE id="Pm69Qb" name="Meter.h" compile="0" resource="0" file="Source/Meter.h"/>
+      <FILE id="shhUXd" name="RNBO_CodeHandler.h" compile="0" resource="0"
+            file="Source/RNBO_CodeHandler.h"/>
+      <GROUP id="{92937474-B9F9-5EB4-9667-95AA5673BAFC}" name="GENExport">
+        <GROUP id="{EC700BB7-9106-BFB1-95E1-B7154F759468}" name="gen_dsp">
+          <FILE id="IvRTED" name="biquadStereo.cpp" compile="1" resource="0"
+                file="Source/GENExport/gen_dsp/biquadStereo.cpp"/>
+          <FILE id="zbl9Qj" name="biquadStereo.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/biquadStereo.h"/>
+          <FILE id="WFowmz" name="genlib.cpp" compile="1" resource="0" file="Source/GENExport/gen_dsp/genlib.cpp"/>
+          <FILE id="FQ98pw" name="genlib.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/genlib.h"/>
+          <FILE id="c4spXB" name="genlib_common.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/genlib_common.h"/>
+          <FILE id="mQLBeP" name="genlib_common_win.h" compile="0" resource="0"
+                file="Source/GENExport/gen_dsp/genlib_common_win.h"/>
+          <FILE id="XR2uRQ" name="genlib_exportfunctions.h" compile="0" resource="0"
+                file="Source/GENExport/gen_dsp/genlib_exportfunctions.h"/>
+          <FILE id="vNywFO" name="genlib_ops.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/genlib_ops.h"/>
+          <FILE id="UbeUpq" name="genlib_platform.h" compile="0" resource="0"
+                file="Source/GENExport/gen_dsp/genlib_platform.h"/>
+          <FILE id="tJWF0c" name="json.c" compile="1" resource="0" file="Source/GENExport/gen_dsp/json.c"/>
+          <FILE id="JEETIA" name="json.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/json.h"/>
+          <FILE id="sFplqI" name="json_builder.c" compile="1" resource="0" file="Source/GENExport/gen_dsp/json_builder.c"/>
+          <FILE id="wf5gzM" name="json_builder.h" compile="0" resource="0" file="Source/GENExport/gen_dsp/json_builder.h"/>
+        </GROUP>
+        <FILE id="gsQjvd" name="GenHandler.h" compile="0" resource="0" file="Source/GENExport/GenHandler.h"/>
+      </GROUP>
+      <FILE id="fEdQxb" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="v8PQyS" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="YfkUbu" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="cM2v3W" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{73F0A3BE-03BE-4810-C0EA-AFB6A1F29387}" name="RNBOcode">
+      <GROUP id="{7C1890F3-FF26-EB47-09F7-07261E7447F2}" name="rnbo">
+        <GROUP id="{AE2D6002-FFFD-AFB9-F982-7D91EC6468A9}" name="adapters">
+          <GROUP id="{859DC47C-A598-F94F-4900-B778AEEE5B17}" name="juce">
+            <GROUP id="{7B027027-3CFD-3421-6134-912C45C83B1E}" name="staticplugin">
+              <FILE id="XElIq5" name="au.cpp" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/au.cpp"/>
+              <FILE id="VLUUxh" name="AUInfo.plist.in" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/AUInfo.plist.in"/>
+              <FILE id="FaC5cJ" name="common.cpp" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/common.cpp"/>
+              <FILE id="ECB0cR" name="PkgInfo" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/PkgInfo"/>
+              <FILE id="U2nqMu" name="unity.cpp" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/unity.cpp"/>
+              <FILE id="YHaWeE" name="UnityInfo.plist.in" compile="0" resource="0"
+                    file="RNBOcode/rnbo/adapters/juce/staticplugin/UnityInfo.plist.in"/>
+              <FILE id="s7NyWJ" name="vst3.cpp" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/staticplugin/vst3.cpp"/>
+              <FILE id="wBSiaL" name="VST3Info.plist.in" compile="0" resource="0"
+                    file="RNBOcode/rnbo/adapters/juce/staticplugin/VST3Info.plist.in"/>
+            </GROUP>
+            <FILE id="jJSyvF" name="LICENSE" compile="0" resource="0" file="RNBOcode/rnbo/adapters/juce/LICENSE"/>
+            <FILE id="wyVawv" name="RNBO_JuceAudioProcessor.cpp" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessor.cpp"/>
+            <FILE id="f8sP4X" name="RNBO_JuceAudioProcessor.h" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessor.h"/>
+            <FILE id="x6U3KV" name="RNBO_JuceAudioProcessorEditor.cpp" compile="0"
+                  resource="0" file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessorEditor.cpp"/>
+            <FILE id="F4TMG2" name="RNBO_JuceAudioProcessorEditor.h" compile="0"
+                  resource="0" file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessorEditor.h"/>
+            <FILE id="EIX2z2" name="RNBO_JuceAudioProcessorUtils.cpp" compile="0"
+                  resource="0" file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessorUtils.cpp"/>
+            <FILE id="JpN8GS" name="RNBO_JuceAudioProcessorUtils.h" compile="0"
+                  resource="0" file="RNBOcode/rnbo/adapters/juce/RNBO_JuceAudioProcessorUtils.h"/>
+          </GROUP>
+          <GROUP id="{4B4FC867-4336-E7A5-BEB4-A07A5AC3EDE5}" name="max">
+            <GROUP id="{68D4CD85-282F-A5C8-783F-0073E343BCCF}" name="external">
+              <GROUP id="{B279A768-04C0-4157-A945-F9833EAC2748}" name="rnbo_external_wrapper">
+                <FILE id="virZeN" name="rnbo_external_wrapper.cpp" compile="0" resource="0"
+                      file="RNBOcode/rnbo/adapters/max/external/rnbo_external_wrapper/rnbo_external_wrapper.cpp"/>
+              </GROUP>
+            </GROUP>
+            <FILE id="c7eVkP" name="LICENSE" compile="0" resource="0" file="RNBOcode/rnbo/adapters/max/LICENSE"/>
+            <FILE id="mvvQ8c" name="rnbo_bufferref.cpp" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/rnbo_bufferref.cpp"/>
+            <FILE id="pHXqEr" name="rnbo_bufferref.h" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/rnbo_bufferref.h"/>
+            <FILE id="UAM42E" name="rnbo_data_loader.cpp" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/rnbo_data_loader.cpp"/>
+            <FILE id="CKbeWL" name="rnbo_data_loader.h" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/rnbo_data_loader.h"/>
+            <FILE id="yAFyrG" name="RNBO_MaxPlatformInterface.h" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/RNBO_MaxPlatformInterface.h"/>
+            <FILE id="K5icdy" name="RNBO_MaxPresetAdapter.cpp" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/RNBO_MaxPresetAdapter.cpp"/>
+            <FILE id="s3Sykd" name="RNBO_MaxPresetAdapter.h" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/max/RNBO_MaxPresetAdapter.h"/>
+          </GROUP>
+          <GROUP id="{866B2B95-5EE3-B3B1-297C-6C555CE1F729}" name="wasm">
+            <FILE id="oc6JCi" name="LICENSE" compile="0" resource="0" file="RNBOcode/rnbo/adapters/wasm/LICENSE"/>
+            <FILE id="jTPIi7" name="RNBO_WebAssembly.cpp" compile="0" resource="0"
+                  file="RNBOcode/rnbo/adapters/wasm/RNBO_WebAssembly.cpp"/>
+          </GROUP>
+        </GROUP>
+        <GROUP id="{A440E5D6-E05B-4548-0974-8E2371275907}" name="cmake">
+          <FILE id="x6UlGp" name="CCache.cmake" compile="0" resource="0" file="RNBOcode/rnbo/cmake/CCache.cmake"/>
+          <FILE id="lqbb6O" name="conan.cmake" compile="0" resource="0" file="RNBOcode/rnbo/cmake/conan.cmake"/>
+          <FILE id="BRcqU0" name="MinGWSTDThreads.cmake" compile="0" resource="0"
+                file="RNBOcode/rnbo/cmake/MinGWSTDThreads.cmake"/>
+          <FILE id="eLO7ml" name="rnbo_description.h.in" compile="0" resource="0"
+                file="RNBOcode/rnbo/cmake/rnbo_description.h.in"/>
+          <FILE id="UwKb7S" name="RNBOConan.cmake" compile="0" resource="0" file="RNBOcode/rnbo/cmake/RNBOConan.cmake"/>
+          <FILE id="fXjajL" name="RNBODescriptionHeader.cmake" compile="0" resource="0"
+                file="RNBOcode/rnbo/cmake/RNBODescriptionHeader.cmake"/>
+          <FILE id="WgokTI" name="RNBOJuce.cmake" compile="0" resource="0" file="RNBOcode/rnbo/cmake/RNBOJuce.cmake"/>
+          <FILE id="NHYK6z" name="SCCache.cmake" compile="0" resource="0" file="RNBOcode/rnbo/cmake/SCCache.cmake"/>
+        </GROUP>
+        <GROUP id="{86721355-C0B4-D717-E2AC-6A291B5F47DC}" name="common">
+          <FILE id="dr929f" name="RNBO_Array.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Array.h"/>
+          <FILE id="UwSIVT" name="RNBO_AudioSignal.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_AudioSignal.h"/>
+          <FILE id="rgVN8n" name="RNBO_BaseInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_BaseInterface.h"/>
+          <FILE id="TOn9PB" name="RNBO_CMath.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_CMath.h"/>
+          <FILE id="tuzsz1" name="RNBO_Common.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Common.h"/>
+          <FILE id="kAT3aC" name="RNBO_CompilerMacros.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_CompilerMacros.h"/>
+          <FILE id="bCAwhL" name="RNBO_DataRef.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_DataRef.h"/>
+          <FILE id="ERxvL9" name="RNBO_Debug.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Debug.h"/>
+          <FILE id="b9r4X0" name="RNBO_EngineInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_EngineInterface.h"/>
+          <FILE id="vISJC8" name="RNBO_EngineLink.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_EngineLink.h"/>
+          <FILE id="X7M9Ej" name="RNBO_EventTarget.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_EventTarget.h"/>
+          <FILE id="Tv8iMY" name="RNBO_ExternalBase.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ExternalBase.h"/>
+          <FILE id="h7it0Q" name="RNBO_ExternalPtr.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ExternalPtr.h"/>
+          <FILE id="cXpehP" name="RNBO_List.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_List.h"/>
+          <FILE id="r4iMwz" name="RNBO_ListHelpers.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ListHelpers.h"/>
+          <FILE id="lW949X" name="RNBO_Logger.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Logger.h"/>
+          <FILE id="wSgwAY" name="RNBO_Math.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Math.h"/>
+          <FILE id="mrOW5h" name="RNBO_MathFast.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_MathFast.h"/>
+          <FILE id="HXQvSK" name="RNBO_MIDIHelper.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_MIDIHelper.h"/>
+          <FILE id="S0hI5r" name="RNBO_ParameterInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ParameterInterface.h"/>
+          <FILE id="G3GY7R" name="RNBO_PatcherEventTarget.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PatcherEventTarget.h"/>
+          <FILE id="Ed4hTL" name="RNBO_PatcherFactory.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PatcherFactory.h"/>
+          <FILE id="uOs6nX" name="RNBO_PatcherInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PatcherInterface.h"/>
+          <FILE id="j6brkR" name="RNBO_PatcherInterfaceImpl.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PatcherInterfaceImpl.h"/>
+          <FILE id="Hq5NH6" name="RNBO_PatcherStateInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PatcherStateInterface.h"/>
+          <FILE id="c9gyEF" name="RNBO_PlatformInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_PlatformInterface.h"/>
+          <FILE id="Sd6llh" name="RNBO_ProbingInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ProbingInterface.h"/>
+          <FILE id="Gvvgf9" name="RNBO_ProcessInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_ProcessInterface.h"/>
+          <FILE id="oA00X3" name="RNBO_Std.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Std.h"/>
+          <FILE id="d9Pm7c" name="RNBO_String.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_String.h"/>
+          <FILE id="pDtTrn" name="RNBO_TimeConverter.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_TimeConverter.h"/>
+          <FILE id="urRf1p" name="RNBO_Types.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Types.h"/>
+          <FILE id="NviEzD" name="RNBO_UniquePtr.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/common/RNBO_UniquePtr.h"/>
+          <FILE id="K3xIsx" name="RNBO_Version.h" compile="0" resource="0" file="RNBOcode/rnbo/common/RNBO_Version.h"/>
+        </GROUP>
+        <GROUP id="{B043DA35-BA64-8D42-EA27-771052F6D47D}" name="externals">
+          <FILE id="lTbBzJ" name="ext_rnbo.h" compile="0" resource="0" file="RNBOcode/rnbo/externals/ext_rnbo.h"/>
+          <FILE id="xARm3Z" name="RNBO_DllExternal.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/externals/RNBO_DllExternal.h"/>
+          <FILE id="tQFuvz" name="RNBO_External.h" compile="0" resource="0" file="RNBOcode/rnbo/externals/RNBO_External.h"/>
+        </GROUP>
+        <GROUP id="{B25BD6B9-0165-CF98-0ECC-D1DACB0EADBC}" name="src">
+          <GROUP id="{CB986A50-6FFF-DF20-1EF6-15C98D47AFD0}" name="3rdparty">
+            <GROUP id="{990AE940-F1F9-7AF6-34BB-A50E01850A14}" name="concurrentqueue">
+              <GROUP id="{D890B219-55F9-759D-A483-072CBAA7837F}" name="internal">
+                <FILE id="rVHetN" name="concurrentqueue_internal_debug.h" compile="0"
+                      resource="0" file="RNBOcode/rnbo/src/3rdparty/concurrentqueue/internal/concurrentqueue_internal_debug.h"/>
+              </GROUP>
+              <FILE id="DAI6KZ" name="blockingconcurrentqueue.h" compile="0" resource="0"
+                    file="RNBOcode/rnbo/src/3rdparty/concurrentqueue/blockingconcurrentqueue.h"/>
+              <FILE id="gzqbOy" name="concurrentqueue.h" compile="0" resource="0"
+                    file="RNBOcode/rnbo/src/3rdparty/concurrentqueue/concurrentqueue.h"/>
+              <FILE id="vA6Y4z" name="LICENSE.md" compile="0" resource="0" file="RNBOcode/rnbo/src/3rdparty/concurrentqueue/LICENSE.md"/>
+              <FILE id="jOt8ae" name="lightweightsemaphore.h" compile="0" resource="0"
+                    file="RNBOcode/rnbo/src/3rdparty/concurrentqueue/lightweightsemaphore.h"/>
+            </GROUP>
+            <GROUP id="{FF2C45C5-FF8A-FB8B-591A-2B2FE7B8C809}" name="json">
+              <FILE id="tJlxfB" name="json.hpp" compile="0" resource="0" file="RNBOcode/rnbo/src/3rdparty/json/json.hpp"/>
+            </GROUP>
+            <GROUP id="{E6115006-7409-EF94-E1B2-8D2FF6115403}" name="MPark_variant">
+              <FILE id="TiIcal" name="variant.hpp" compile="0" resource="0" file="RNBOcode/rnbo/src/3rdparty/MPark_variant/variant.hpp"/>
+            </GROUP>
+            <GROUP id="{DE8912BE-D3B7-CCE0-C1B1-3F769423C899}" name="readerwriterqueue">
+              <FILE id="UCvPoX" name="atomicops.h" compile="0" resource="0" file="RNBOcode/rnbo/src/3rdparty/readerwriterqueue/atomicops.h"/>
+              <FILE id="eLyftA" name="LICENSE.md" compile="0" resource="0" file="RNBOcode/rnbo/src/3rdparty/readerwriterqueue/LICENSE.md"/>
+              <FILE id="rW2BVn" name="readerwriterqueue.h" compile="0" resource="0"
+                    file="RNBOcode/rnbo/src/3rdparty/readerwriterqueue/readerwriterqueue.h"/>
+            </GROUP>
+          </GROUP>
+          <GROUP id="{A6D8645D-47B6-A560-A60B-277B73DB5B7C}" name="platforms">
+            <GROUP id="{92B032ED-A04B-D748-3A54-A3E0E973847B}" name="nostdlib">
+              <FILE id="PN1piN" name="RNBO_LoggerNoStdLib.cpp" compile="0" resource="0"
+                    file="RNBOcode/rnbo/src/platforms/nostdlib/RNBO_LoggerNoStdLib.cpp"/>
+              <FILE id="yyXOPh" name="RNBO_PlatformInterfaceNoStdLib.cpp" compile="0"
+                    resource="0" file="RNBOcode/rnbo/src/platforms/nostdlib/RNBO_PlatformInterfaceNoStdLib.cpp"/>
+            </GROUP>
+            <GROUP id="{958D7DD4-0652-B527-B5B3-4D1088366561}" name="stdlib">
+              <FILE id="s59GsD" name="RNBO_PlatformInterfaceStdLib.h" compile="0"
+                    resource="0" file="RNBOcode/rnbo/src/platforms/stdlib/RNBO_PlatformInterfaceStdLib.h"/>
+            </GROUP>
+          </GROUP>
+          <FILE id="b9D8gd" name="RNBO_AudioBufferConverter.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_AudioBufferConverter.h"/>
+          <FILE id="VBDX73" name="RNBO_BBUEvent.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_BBUEvent.h"/>
+          <FILE id="dZCHqG" name="RNBO_BeatTimeEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_BeatTimeEvent.h"/>
+          <FILE id="PhG7xe" name="RNBO_BinaryData.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_BinaryData.h"/>
+          <FILE id="JzsXsX" name="RNBO_ClangInterface.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ClangInterface.h"/>
+          <FILE id="Y3Xe1L" name="RNBO_ClockEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ClockEvent.h"/>
+          <FILE id="TDlRNi" name="RNBO_Config.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Config.h"/>
+          <FILE id="UP65F5" name="RNBO_CoreObject.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_CoreObject.cpp"/>
+          <FILE id="umQDjR" name="RNBO_CoreObject.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_CoreObject.h"/>
+          <FILE id="mXOsVv" name="RNBO_DataBuffer.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DataBuffer.cpp"/>
+          <FILE id="WVESqS" name="RNBO_DataBuffer.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DataBuffer.h"/>
+          <FILE id="xRDCXy" name="RNBO_DataRefEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DataRefEvent.h"/>
+          <FILE id="tzLzV8" name="RNBO_DataRefList.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DataRefList.cpp"/>
+          <FILE id="LRnumd" name="RNBO_DataRefList.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DataRefList.h"/>
+          <FILE id="XvTvdT" name="RNBO_DynamicPatcherFactory.cpp" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_DynamicPatcherFactory.cpp"/>
+          <FILE id="YOMqrI" name="RNBO_DynamicPatcherFactory.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DynamicPatcherFactory.h"/>
+          <FILE id="CuqXCk" name="RNBO_DynamicSymbolRegistry.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_DynamicSymbolRegistry.h"/>
+          <FILE id="KK03gU" name="RNBO_EmptyEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EmptyEvent.h"/>
+          <FILE id="BBTwtk" name="RNBO_Engine.cpp" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Engine.cpp"/>
+          <FILE id="mDOZd9" name="RNBO_Engine.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Engine.h"/>
+          <FILE id="zAzwVY" name="RNBO_EngineCore.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EngineCore.h"/>
+          <FILE id="AOUnRU" name="RNBO_EventList.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EventList.h"/>
+          <FILE id="QmalG0" name="RNBO_EventQueue.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EventQueue.h"/>
+          <FILE id="SrVfQ9" name="RNBO_EventSender.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EventSender.h"/>
+          <FILE id="KdsWhw" name="RNBO_EventVariant.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_EventVariant.h"/>
+          <FILE id="mItQLc" name="RNBO_ExternalData.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ExternalData.h"/>
+          <FILE id="jg7WmT" name="RNBO_ExternalLoader.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ExternalLoader.cpp"/>
+          <FILE id="o2wbKI" name="RNBO_ExternalLoader.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ExternalLoader.h"/>
+          <FILE id="bg0sm7" name="RNBO_FileChangeWatcher.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_FileChangeWatcher.cpp"/>
+          <FILE id="lV1Kfv" name="RNBO_FileChangeWatcher.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_FileChangeWatcher.h"/>
+          <FILE id="LWWOz3" name="RNBO_HardwareDevice.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_HardwareDevice.h"/>
+          <FILE id="FHhDN0" name="RNBO_List.cpp" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_List.cpp"/>
+          <FILE id="ggNsPY" name="RNBO_Logger.cpp" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Logger.cpp"/>
+          <FILE id="RwMNzt" name="RNBO_MaxClang.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_MaxClang.cpp"/>
+          <FILE id="WZioj9" name="RNBO_MaxClang.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_MaxClang.h"/>
+          <FILE id="IIx2NJ" name="RNBO_MessageEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_MessageEvent.h"/>
+          <FILE id="Mz6oG3" name="RNBO_MidiEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_MidiEvent.h"/>
+          <FILE id="UXD1u4" name="RNBO_MidiStreamParser.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_MidiStreamParser.h"/>
+          <FILE id="FKLsyh" name="RNBO_NullPatcher.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_NullPatcher.h"/>
+          <FILE id="cjD2jM" name="RNBO_OutletEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_OutletEvent.h"/>
+          <FILE id="AhHbKy" name="RNBO_ParameterEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ParameterEvent.h"/>
+          <FILE id="ZVMNlk" name="RNBO_ParameterEventInterface.h" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterEventInterface.h"/>
+          <FILE id="dNZLnt" name="RNBO_ParameterEventQueue.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ParameterEventQueue.h"/>
+          <FILE id="DI7kPw" name="RNBO_ParameterInterfaceAsync.cpp" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterInterfaceAsync.cpp"/>
+          <FILE id="kqNuBI" name="RNBO_ParameterInterfaceAsync.h" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterInterfaceAsync.h"/>
+          <FILE id="fwR0JY" name="RNBO_ParameterInterfaceAsyncImpl.h" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterInterfaceAsyncImpl.h"/>
+          <FILE id="cuTLZf" name="RNBO_ParameterInterfaceSync.cpp" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterInterfaceSync.cpp"/>
+          <FILE id="nl9oTr" name="RNBO_ParameterInterfaceSync.h" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_ParameterInterfaceSync.h"/>
+          <FILE id="FugddS" name="RNBO_ParamNameHash.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ParamNameHash.h"/>
+          <FILE id="OUPZKS" name="RNBO_PatcherEventSender.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PatcherEventSender.h"/>
+          <FILE id="RXtoTt" name="RNBO_PatcherFactory.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PatcherFactory.cpp"/>
+          <FILE id="Wckugk" name="RNBO_PatcherState.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PatcherState.cpp"/>
+          <FILE id="wLuyu9" name="RNBO_PatcherState.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PatcherState.h"/>
+          <FILE id="TW56XA" name="RNBO_PatcherStateDummy.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PatcherStateDummy.h"/>
+          <FILE id="TrMLee" name="RNBO_PlatformInterfaceImpl.cpp" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_PlatformInterfaceImpl.cpp"/>
+          <FILE id="RLZt3O" name="RNBO_PresetEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PresetEvent.h"/>
+          <FILE id="oGl04s" name="RNBO_PresetList.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PresetList.cpp"/>
+          <FILE id="A1xuZS" name="RNBO_PresetList.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_PresetList.h"/>
+          <FILE id="RXxBoB" name="RNBO_Presets.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Presets.h"/>
+          <FILE id="zbetFR" name="RNBO_RemoteParameterClient.cpp" compile="0"
+                resource="0" file="RNBOcode/rnbo/src/RNBO_RemoteParameterClient.cpp"/>
+          <FILE id="LvLCZF" name="RNBO_ServiceNotification.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_ServiceNotification.h"/>
+          <FILE id="HwneLn" name="RNBO_StartupEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_StartupEvent.h"/>
+          <FILE id="tmvHZD" name="RNBO_TempoEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_TempoEvent.h"/>
+          <FILE id="CfxZEP" name="RNBO_TimeSignatureEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_TimeSignatureEvent.h"/>
+          <FILE id="K5Fzhe" name="RNBO_TransportEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_TransportEvent.h"/>
+          <FILE id="Nz5nVf" name="RNBO_UnitTests.cpp" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_UnitTests.cpp"/>
+          <FILE id="GkTgly" name="RNBO_UnitTests.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_UnitTests.h"/>
+          <FILE id="tRcJeH" name="RNBO_UniversalEvent.h" compile="0" resource="0"
+                file="RNBOcode/rnbo/src/RNBO_UniversalEvent.h"/>
+          <FILE id="ukp9Zq" name="RNBO_Utils.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Utils.h"/>
+          <FILE id="lNnC90" name="RNBO_Vector.h" compile="0" resource="0" file="RNBOcode/rnbo/src/RNBO_Vector.h"/>
+        </GROUP>
+        <GROUP id="{F088B036-DB11-E12E-9B0C-1EE80C451F87}" name="test">
+          <FILE id="JXruoa" name="main.cpp" compile="0" resource="0" file="RNBOcode/rnbo/test/main.cpp"/>
+        </GROUP>
+        <FILE id="Dawoa3" name="LICENSE" compile="0" resource="0" file="RNBOcode/rnbo/LICENSE"/>
+        <FILE id="Qm3bUw" name="RNBO.cpp" compile="1" resource="0" file="RNBOcode/rnbo/RNBO.cpp"/>
+        <FILE id="QaWIUo" name="RNBO.h" compile="0" resource="0" file="RNBOcode/rnbo/RNBO.h"/>
+        <FILE id="Vv6KST" name="version.cmake" compile="0" resource="0" file="RNBOcode/rnbo/version.cmake"/>
+      </GROUP>
+      <FILE id="IGjC2S" name="dependencies.json" compile="0" resource="0"
+            file="RNBOcode/dependencies.json"/>
+      <FILE id="UWSlut" name="description.json" compile="0" resource="0"
+            file="RNBOcode/description.json"/>
+      <FILE id="bXCZ5f" name="rnbo_source.cpp" compile="1" resource="0" file="RNBOcode/rnbo_source.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="ChannelStrip" headerPath="$(PROJECT_DIR)/../../RNBOcode/rnbo &#10;&#10;$(PROJECT_DIR)/../../RNBOcode/rnbo/common"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="ChannelStrip" headerPath="$(PROJECT_DIR)/../../RNBOcode/rnbo &#10;&#10;$(PROJECT_DIR)/../../RNBOcode/rnbo/common"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../Applications/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+</JUCERPROJECT>
