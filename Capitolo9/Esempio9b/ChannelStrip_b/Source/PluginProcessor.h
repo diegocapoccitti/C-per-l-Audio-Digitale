@@ -76,14 +76,15 @@ public:
 private:
     //funzione per creare parametri
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    void updateAllParameters();
     
     //Variabili patch di gen~ e rnbo~
     GenHandler hpObj, bellObj, lpObj;
     RNBOcodeHandler compressorObj;
     
     //Bypass e Gain
-    bool bypassVal;
-    float gainVal;
+    bool bypassVal  { false };
+    float gainVal   { 1.0f };
     
     //Variabili picchi thread-safe
     std::atomic<float> peakLevelIn { 0.0f };

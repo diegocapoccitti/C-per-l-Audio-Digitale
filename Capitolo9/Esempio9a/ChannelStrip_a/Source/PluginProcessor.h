@@ -62,14 +62,15 @@ public:
 private:
     //funzione per creare parametri
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    void updateAllParameters();
     
     //Variabili patch di gen~ e rnbo~
     GenHandler hpObj, bellObj, lpObj;
     RNBOcodeHandler compressorObj;
     
     //Bypass e Gain
-    bool bypassVal;
-    float gainVal;
+    bool bypassVal  { false };
+    float gainVal   { 1.0f };
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ChannelStripAudioProcessor)
 };

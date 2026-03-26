@@ -33,9 +33,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout EsempioRNBOAudioProcessor::c
     // creiamo un vettore di unique_ptr<RangedAudioParameter>
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
 
-    // Definizione del parametro di dump
+    // Definizione del parametro di delaytime
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("delaytime",1), "Delaytime", 1.0f, 2000.0f, 220.f));
-    // Definizione del parametro di drywet
+    // Definizione del parametro di feedback
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("feedback",1), "Feedback", 0.0f, 1.0f, 0.5f));
     
     return { params.begin(), params.end() };
@@ -120,13 +120,15 @@ void EsempioRNBOAudioProcessor::releaseResources()
     // spare memory, etc.
 }
 
+#ifndef JucePlugin_PreferredChannelConfigurations
 bool EsempioRNBOAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
     if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono())
         return false;
-    
+
     return true;
 }
+#endif
 
 void EsempioRNBOAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {

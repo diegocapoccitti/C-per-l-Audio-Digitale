@@ -208,6 +208,23 @@ void ChannelStripAudioProcessor::parameterChanged(const juce::String& parameterI
     }
 }
 
+void ChannelStripAudioProcessor::updateAllParameters()
+{
+    parameterChanged("freq_hp",      *parameters.getRawParameterValue("freq_hp"));
+    parameterChanged("freq_bell",    *parameters.getRawParameterValue("freq_bell"));
+    parameterChanged("gain_bell",    *parameters.getRawParameterValue("gain_bell"));
+    parameterChanged("q_bell",       *parameters.getRawParameterValue("q_bell"));
+    parameterChanged("freq_lp",      *parameters.getRawParameterValue("freq_lp"));
+    parameterChanged("parallel_mix", *parameters.getRawParameterValue("parallel_mix"));
+    parameterChanged("input_gain",   *parameters.getRawParameterValue("input_gain"));
+    parameterChanged("threshold",    *parameters.getRawParameterValue("threshold"));
+    parameterChanged("ratio",        *parameters.getRawParameterValue("ratio"));
+    parameterChanged("attack",       *parameters.getRawParameterValue("attack"));
+    parameterChanged("release",      *parameters.getRawParameterValue("release"));
+    parameterChanged("output_gain",  *parameters.getRawParameterValue("output_gain"));
+    parameterChanged("bypass",       *parameters.getRawParameterValue("bypass"));
+}
+
 
 //==============================================================================
 const juce::String ChannelStripAudioProcessor::getName() const
@@ -262,13 +279,13 @@ void ChannelStripAudioProcessor::changeProgramName (int index, const juce::Strin
 //==============================================================================
 void ChannelStripAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    //Preparazione oggetti gen~
     hpObj.prepareGen(sampleRate, samplesPerBlock);
     bellObj.prepareGen(sampleRate, samplesPerBlock);
     lpObj.prepareGen(sampleRate, samplesPerBlock);
-    
-    //Preparazione oggetto rnbo~
     compressorObj.prepareToPlay(sampleRate, samplesPerBlock);
+
+    // Ricalcola tutti i coefficienti con il nuovo sample rate
+    updateAllParameters();
 }
 
 void ChannelStripAudioProcessor::releaseResources()
@@ -286,6 +303,10 @@ bool ChannelStripAudioProcessor::isBusesLayoutSupported (const BusesLayout& layo
 
 void ChannelStripAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
+    // Duplicazione del canale mono in stereo, se necessario
+    if (buffer.getNumChannels() == 1)
+        buffer.copyFrom(1, 0, buffer, 0, 0, buffer.getNumSamples()); 
+    
     //Peak Meter IN
     float localPeakIn = 0.0f;
     // Trova il picco del buffer corrente

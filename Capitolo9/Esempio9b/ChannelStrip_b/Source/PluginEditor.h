@@ -36,12 +36,12 @@ private:
     
     //Knob compressore
     juce::Slider paralMixKnob, inputGainKnob, threshKnob, ratioKnob, attackKnob, releaseKnob;
-    //Attachment equalizzatore
+    //Attachment compressore
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> paralMixAtt, inputGainAtt, threshAtt, ratioAtt, attackAtt, releaseAtt;
     
     //Knob output Gain
     juce::Slider outputGainKnob;
-    //Attachment equalizzatore
+    //Attachment Gain
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> outputGainAtt;
     
     //Bypass Button

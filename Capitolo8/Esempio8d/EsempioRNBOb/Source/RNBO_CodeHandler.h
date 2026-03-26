@@ -24,6 +24,7 @@ public:
     ~RNBOcodeHandler()
     {
         //Distruggi l'oggetto RNBO
+        delete rnboObj;
         rnboObj = nullptr;
     }
 

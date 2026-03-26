@@ -208,6 +208,23 @@ void ChannelStripAudioProcessor::parameterChanged(const juce::String& parameterI
     }
 }
 
+void ChannelStripAudioProcessor::updateAllParameters()
+{
+    parameterChanged("freq_hp",      *parameters.getRawParameterValue("freq_hp"));
+    parameterChanged("freq_bell",    *parameters.getRawParameterValue("freq_bell"));
+    parameterChanged("gain_bell",    *parameters.getRawParameterValue("gain_bell"));
+    parameterChanged("q_bell",       *parameters.getRawParameterValue("q_bell"));
+    parameterChanged("freq_lp",      *parameters.getRawParameterValue("freq_lp"));
+    parameterChanged("parallel_mix", *parameters.getRawParameterValue("parallel_mix"));
+    parameterChanged("input_gain",   *parameters.getRawParameterValue("input_gain"));
+    parameterChanged("threshold",    *parameters.getRawParameterValue("threshold"));
+    parameterChanged("ratio",        *parameters.getRawParameterValue("ratio"));
+    parameterChanged("attack",       *parameters.getRawParameterValue("attack"));
+    parameterChanged("release",      *parameters.getRawParameterValue("release"));
+    parameterChanged("output_gain",  *parameters.getRawParameterValue("output_gain"));
+    parameterChanged("bypass",       *parameters.getRawParameterValue("bypass"));
+}
+
 
 //==============================================================================
 const juce::String ChannelStripAudioProcessor::getName() const
@@ -269,6 +286,8 @@ void ChannelStripAudioProcessor::prepareToPlay (double sampleRate, int samplesPe
     
     //Preparazione oggetto rnbo~
     compressorObj.prepareToPlay(sampleRate, samplesPerBlock);
+    
+    updateAllParameters();
 }
 
 void ChannelStripAudioProcessor::releaseResources()
