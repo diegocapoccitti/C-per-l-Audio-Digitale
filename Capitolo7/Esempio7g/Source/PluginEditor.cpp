@@ -10,79 +10,97 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-Esempio76AudioProcessorEditor::Esempio76AudioProcessorEditor (Esempio76AudioProcessor& p)
+TESTAudioProcessorEditor::TESTAudioProcessorEditor (TESTAudioProcessor& p)
     : AudioProcessorEditor (&p), audioProcessor (p)
 {
-    //caratterizzazione knob Gain
-    gainKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-    gainKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, true, 100, 20);
-    gainKnob.setRange(-60.f, 12.f, 0.f);
-    addAndMakeVisible(gainKnob);
-    
-    //Attachment Gain
-    gainAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.parameters, "gain", gainKnob);
-    
-    //caratterizzazione label Gain
-    gainLabel.setText("Gain", juce::NotificationType::dontSendNotification);
-    gainLabel.setJustificationType(juce::Justification::centred);
-    addAndMakeVisible(gainLabel);
-    
-    //caratterizzazione label Meter
-    meterLabel.setText("Meter", juce::NotificationType::dontSendNotification);
-    meterLabel.setJustificationType(juce::Justification::centred);
-    addAndMakeVisible(meterLabel);
-    
-    //esegure timerCallback ogni 30ms
-    startTimer(30);
-    
-    //Imposta la finestra principale a 450 px di larghezza e  250 px di altezza
-    setSize (450, 250);
+    setSize (400, 300);
+
+    // --- Configurazione del Knob ---
+    // Stile rotary con trascinamento verticale e casella di testo sotto
+    gainKnob.setSliderStyle (juce::Slider::SliderStyle::RotaryVerticalDrag);
+    gainKnob.setTextBoxStyle (juce::Slider::TextEntryBoxPosition::TextBoxBelow,
+                              true, 100, 20);
+    addAndMakeVisible (gainKnob);
+
+    // L'attachment collega il knob al parametro "gain" dell'APVTS:
+    // ogni volta che l'utente muove il knob, il valore del parametro viene aggiornato
+    // automaticamente senza dover scrivere nessun listener nell'editor.
+    gainAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+        audioProcessor.parameters, "gain", gainKnob);
+
+    gainLabel.setText ("Gain", juce::NotificationType::dontSendNotification);
+    gainLabel.setJustificationType (juce::Justification::centred);
+    gainLabel.setColour (juce::Label::textColourId, juce::Colours::white);
+    addAndMakeVisible (gainLabel);
+
+    // Avvia il timer a 30 ms (~30 fps): verrà chiamato timerCallback() a ogni tick
+    startTimer (30);
 }
 
-void Esempio76AudioProcessorEditor::timerCallback()
+TESTAudioProcessorEditor::~TESTAudioProcessorEditor()
 {
-    // Chiama repaint per aggiornare il disegno del meter in base al livello di uscita
-    repaint();
-}
-
-Esempio76AudioProcessorEditor::~Esempio76AudioProcessorEditor()
-{
-    //Ferma il timer
     stopTimer();
 }
 
 //==============================================================================
-void Esempio76AudioProcessorEditor::paint (juce::Graphics& g)
+void TESTAudioProcessorEditor::timerCallback()
 {
-    //Colora la finestra di nero
-    g.fillAll(juce::Colours::black);
-    
-    //altezza meter
-    float hMeter = 100.f;
-    
-    // Disegna il background del meter
-    g.setColour(juce::Colours::darkgrey);
-    g.fillRect(300, 100, 50, (int)hMeter);
-    
-    // Calcola l'altezza del rettangolo verde
-    float dB = audioProcessor.getOutputdB();
-    if (dB < -60.f) dB = -60.f;
-    float meterHeight = juce::jmap(dB, -60.0f, 12.0f, 0.0f, hMeter);
-    
-    // Disegna il rettangolo verde che riflette il livello di uscita
-    g.setColour(juce::Colours::green);
-    g.fillRect(300.f, (float)(100.f + hMeter - meterHeight), 50.f, meterHeight);
-    
-    //Scrivi intestazione Plugin
-    g.setColour(juce::Colours::white);
-    g.setFont(20);
-    g.drawText("GAINMETER PLUGIN", 0, 10, getWidth(), 40, juce::Justification::centred);
+    // Forza il ridisegno dell'editor: così il meter viene aggiornato ~30 volte al secondo
+    repaint();
 }
 
-void Esempio76AudioProcessorEditor::resized()
+//==============================================================================
+void TESTAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    //Posiziona gli oggetti
-    gainKnob.setBounds(100, 100, 100, 100);
-    gainLabel.setBounds(gainKnob.getX(), gainKnob.getY()-40, gainKnob.getWidth(), 20);
-    meterLabel.setBounds(300, gainKnob.getY()-40, 50, 20);
+    // Sfondo nero
+    g.fillAll (juce::Colours::black);
+
+    // --- Titolo ---
+    g.setColour (juce::Colours::white);
+    g.setFont (juce::FontOptions (20.0f).withStyle ("Bold"));
+    g.drawFittedText ("GAINMETER PLUGIN", 0, 0, getWidth(), 40,
+                      juce::Justification::centred, 1);
+
+    // --- Label "Meter" ---
+    g.setFont (juce::FontOptions (15.0f));
+    g.drawFittedText ("Meter",
+                      getWidth() / 2, 80, getWidth() / 2, 20,
+                      juce::Justification::centred, 1);
+
+    // --- Disegno del Meter ---
+    // Posizione e dimensioni del rettangolo del meter
+    const int meterX = 3 * getWidth() / 4 - 40;
+    const int meterY = 100;
+    const int meterW = 80;
+    const int hmeter = getHeight() - 120;   // altezza totale disponibile
+
+    // 1) Sfondo grigio scuro (livello "vuoto")
+    g.setColour (juce::Colours::darkgrey);
+    g.fillRect (meterX, meterY, meterW, hmeter);
+
+    // 2) Parte verde che sale dal basso in proporzione al livello in dB
+    //    getOutputdB() restituisce il picco calcolato nel processBlock
+    const float dB = audioProcessor.getOutputdB();
+
+    //    jmap mappa il range dB [-60, +12] nell'intervallo di pixel [0, hmeter]
+    float meterHeight = juce::jmap (dB, -60.0f, 12.0f, 0.0f, (float) hmeter);
+    meterHeight = juce::jlimit (0.0f, (float) hmeter, meterHeight);
+
+    //    Il rettangolo verde parte dal basso: la sua y di partenza è
+    //    meterY + hmeter - meterHeight  (coordinate Y scendono verso il basso)
+    g.setColour (juce::Colours::green);
+    g.fillRect (meterX,
+                meterY + hmeter - (int) meterHeight,
+                meterW,
+                (int) meterHeight);
+}
+
+//==============================================================================
+void TESTAudioProcessorEditor::resized()
+{
+    // Label "Gain" sopra il knob
+    gainLabel.setBounds (30, 80, 160, 20);
+
+    // Knob centrato nella metà sinistra della finestra
+    gainKnob.setBounds (30, 100, 160, 160);
 }

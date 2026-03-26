@@ -10,146 +10,181 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-Esempio76AudioProcessor::Esempio76AudioProcessor()
-        : AudioProcessor (BusesProperties()
+TESTAudioProcessor::TESTAudioProcessor()
+         : AudioProcessor (BusesProperties()
                        .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
-                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
-                          ),
-parameters(*this, nullptr, juce::Identifier("PARAMS"), createParameterLayout())
-
+                       .withOutput ("Output", juce::AudioChannelSet::stereo(), true) ),
+                     parameters(*this, nullptr, juce::Identifier("PARAMS"), createParameterLayout())
+                           
 {
     parameters.addParameterListener("gain", this);
 }
 
-Esempio76AudioProcessor::~Esempio76AudioProcessor()
+TESTAudioProcessor::~TESTAudioProcessor()
 {
     // Deregistrazione dei listener
     parameters.removeParameterListener("gain", this);
-
 }
 
-void Esempio76AudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
+juce::AudioProcessorValueTreeState::ParameterLayout TESTAudioProcessor::createParameterLayout()
+{
+   // creiamo un vettore di unique_ptr<RangedAudioParameter>
+   std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+
+   // Definizione del parametro di Gain
+params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("gain", 1), "Gain", -60.0f, 12.0f, 0.f));
+
+   return { params.begin(), params.end() };
+}
+
+void TESTAudioProcessor::parameterChanged(const juce::String& parameterID, float newValue)
 {
     if (parameterID == "gain")
     {
         level = newValue;
-        // Calcola la magnitudo a partire dal valore in dB di “level” e salva il risultato in "mult"
-        mult = std::pow(10.0f, level / 20.0f);
+    // Calcola la magnitudo a partire dal valore in dB di “level” e salva il risultato in "mult"
+            mult = std::pow(10.0f, level / 20.0f);
     }
 
 }
 
 //==============================================================================
-const juce::String Esempio76AudioProcessor::getName() const
+const juce::String TESTAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool Esempio76AudioProcessor::acceptsMidi() const
+bool TESTAudioProcessor::acceptsMidi() const
 {
+   #if JucePlugin_WantsMidiInput
+    return true;
+   #else
     return false;
+   #endif
 }
 
-bool Esempio76AudioProcessor::producesMidi() const
+bool TESTAudioProcessor::producesMidi() const
 {
+   #if JucePlugin_ProducesMidiOutput
+    return true;
+   #else
     return false;
+   #endif
 }
 
-bool Esempio76AudioProcessor::isMidiEffect() const
+bool TESTAudioProcessor::isMidiEffect() const
 {
+   #if JucePlugin_IsMidiEffect
+    return true;
+   #else
     return false;
+   #endif
 }
 
-double Esempio76AudioProcessor::getTailLengthSeconds() const
+double TESTAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int Esempio76AudioProcessor::getNumPrograms()
+int TESTAudioProcessor::getNumPrograms()
 {
-    return 1;
+    return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
+                // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int Esempio76AudioProcessor::getCurrentProgram()
+int TESTAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void Esempio76AudioProcessor::setCurrentProgram (int index)
-{}
+void TESTAudioProcessor::setCurrentProgram (int index)
+{
+}
 
-const juce::String Esempio76AudioProcessor::getProgramName (int index)
+const juce::String TESTAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void Esempio76AudioProcessor::changeProgramName (int index, const juce::String& newName)
-{}
-
-//==============================================================================
-void Esempio76AudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
-{}
-
-void Esempio76AudioProcessor::releaseResources()
-{}
-
-bool Esempio76AudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+void TESTAudioProcessor::changeProgramName (int index, const juce::String& newName)
 {
-    if (layouts.getMainOutputChannelSet() != juce::AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != juce::AudioChannelSet::stereo())
-        return false;
-
-    return true;
 }
 
-void Esempio76AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
+//==============================================================================
+void TESTAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+{
+    // Calcola la magnitudo a partire dal valore in dB di “level” e salva il risultato in "mult"
+    mult = std::pow(10.0f, level / 20.0f);
+}
+
+void TESTAudioProcessor::releaseResources()
+{
+    // When playback stops, you can use this as an opportunity to free up any
+    // spare memory, etc.
+}
+
+#ifndef JucePlugin_PreferredChannelConfigurations
+bool TESTAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+{
+    // Verifica che l'input e l'output abbiano entrambi esattamente due canali (stereo)
+    const bool isStereoInput = (layouts.getMainInputChannelSet() == juce::AudioChannelSet::stereo());
+    const bool isStereoOutput = (layouts.getMainOutputChannelSet() == juce::AudioChannelSet::stereo());
+
+    // Restituisce true solo se entrambi i bus sono stereo
+    return isStereoInput && isStereoOutput;
+}
+#endif
+
+void TESTAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     // Ottieni il numero di canali e di campioni nel buffer
     const int numChannels = buffer.getNumChannels();
     const int numSamples = buffer.getNumSamples();
-    
-    //Azzera il outputLevel
-    outputLevel.store(0.f);
 
-    // Applica l'attenuazione a ciascun campione di ogni canale
+    // Applica il guadagno a ciascun campione di ogni canale
     for (int channel = 0; channel < numChannels; ++channel)
     {
         float* channelData = buffer.getWritePointer(channel);
 
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            channelData[sample] *= mult;  // applica il gain
-            
-            //Se il campione è più grande di outputLevel, outputLevel assume il suo valore
-            if (channelData[sample] > outputLevel.load()) outputLevel.store(channelData[sample]);
+            channelData[sample] *= mult;
         }
     }
-}
 
-float Esempio76AudioProcessor::getOutputdB()
-{
-    return juce::Decibels::gainToDecibels(outputLevel.load());
+    // Calcola il picco di uscita per il meter
+    float peak = 0.0f;
+    for (int channel = 0; channel < numChannels; ++channel)
+    {
+        const float* channelData = buffer.getReadPointer(channel);
+        for (int sample = 0; sample < numSamples; ++sample)
+            peak = std::max(peak, std::abs(channelData[sample]));
+    }
+
+    // Converte il picco in dB e lo salva atomicamente (letto dall'editor ogni ~30 ms)
+    const float dB = (peak > 0.0f) ? 20.0f * std::log10(peak) : -60.0f;
+    outputLevelDb.store(dB);
 }
 
 //==============================================================================
-bool Esempio76AudioProcessor::hasEditor() const
+bool TESTAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-juce::AudioProcessorEditor* Esempio76AudioProcessor::createEditor()
+juce::AudioProcessorEditor* TESTAudioProcessor::createEditor()
 {
-    return new Esempio76AudioProcessorEditor (*this);
+    return new TESTAudioProcessorEditor(*this);
 }
 
 //==============================================================================
-void Esempio76AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
+void TESTAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     std::unique_ptr<juce::XmlElement> xml(parameters.copyState().createXml());
     copyXmlToBinary(*xml, destData);
 }
 
-void Esempio76AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void TESTAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml != nullptr && xml->hasTagName(parameters.state.getType()))
@@ -158,20 +193,9 @@ void Esempio76AudioProcessor::setStateInformation (const void* data, int sizeInB
     }
 }
 
-juce::AudioProcessorValueTreeState::ParameterLayout Esempio76AudioProcessor::createParameterLayout()
-{
-    // creiamo un vettore di unique_ptr<RangedAudioParameter>
-    std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
-
-    // Definizione del parametro di Gain
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("gain", 1), "Gain", -60.0f, 12.0f, 0.f));
-
-    return { params.begin(), params.end() };
-}
-
 //==============================================================================
 // This creates new instances of the plugin..
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new Esempio76AudioProcessor();
+    return new TESTAudioProcessor();
 }

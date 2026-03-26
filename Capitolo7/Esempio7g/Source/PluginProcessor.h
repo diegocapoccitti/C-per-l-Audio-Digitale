@@ -13,19 +13,28 @@
 //==============================================================================
 /**
 */
-class Esempio76AudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
+class TESTAudioProcessor  : public juce::AudioProcessor, public juce::AudioProcessorValueTreeState::Listener
 
 {
 public:
     //==============================================================================
-    Esempio76AudioProcessor();
-    ~Esempio76AudioProcessor() override;
+    TESTAudioProcessor();
+    ~TESTAudioProcessor() override;
+    
+    // Dichiarazione dell’APVTS
+    juce::AudioProcessorValueTreeState parameters;
+    
+    //dichiarazione funzione del Listener
+    void parameterChanged(const juce::String& parameterID, float     newValue) override;
+
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
+   #ifndef JucePlugin_PreferredChannelConfigurations
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
+   #endif
 
     void processBlock (juce::AudioBuffer<float>&, juce::MidiBuffer&) override;
 
@@ -51,22 +60,18 @@ public:
     //==============================================================================
     void getStateInformation (juce::MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    
-    //APVTS
-    juce::AudioProcessorValueTreeState parameters;
-    //Funzione che restituisce i dB
-    float getOutputdB();
-    //funzione virtuale del Listener
-    void parameterChanged(const juce::String& parameterID, float newValue) override;
+
+    // Restituisce il livello di uscita in dB (usato dall'editor per il meter)
+    float getOutputdB() const { return outputLevelDb.load(); }
 
 private:
-    //Funzione per creare i parametri
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
-    //Variabili
     float level = -6.0f;
-    float mult = 1.f;
-    //Variabile atomica per comunicare con l'Editor
-    std::atomic<float> outputLevel { 0.0f };
+    float mult = 0.f;
+
+    // Livello di picco in uscita (aggiornato nel processBlock, letto dall'editor)
+    std::atomic<float> outputLevelDb { -60.0f };
+
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Esempio76AudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TESTAudioProcessor)
 };

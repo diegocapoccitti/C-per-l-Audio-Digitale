@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="C5VY3M" name="Esempio76" projectType="audioplug" useAppConfig="0"
+<JUCERPROJECT id="Algu0T" name="TEST" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
-  <MAINGROUP id="JW664F" name="Esempio76">
-    <GROUP id="{AC64582D-CBF7-8254-1926-B96FB28B0C05}" name="Source">
-      <FILE id="GOM9ms" name="PluginProcessor.cpp" compile="1" resource="0"
+  <MAINGROUP id="rl1oGH" name="TEST">
+    <GROUP id="{8593BADF-2AA8-8EAB-53D0-4A0091B4DE8D}" name="Source">
+      <FILE id="EsMhE4" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
-      <FILE id="optdQh" name="PluginProcessor.h" compile="0" resource="0"
+      <FILE id="cBwWaH" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="oWV3yH" name="PluginEditor.cpp" compile="1" resource="0"
+      <FILE id="s9LXsG" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
-      <FILE id="KryFAX" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="hKP0gV" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <MODULES>
@@ -20,6 +20,8 @@
     <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
             useGlobalPath="1"/>
     <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors_headless" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
     <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
@@ -32,8 +34,8 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug" targetName="Esempio76"/>
-        <CONFIGURATION isDebug="0" name="Release" targetName="Esempio76"/>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="TEST"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="TEST"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_basics" path="../../../../Applications/JUCE/modules"/>
@@ -48,6 +50,7 @@
         <MODULEPATH id="juce_graphics" path="../../../../Applications/JUCE/modules"/>
         <MODULEPATH id="juce_gui_basics" path="../../../../Applications/JUCE/modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../../../Applications/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors_headless" path="../../../../../../../../Applications/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>

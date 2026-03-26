@@ -14,29 +14,30 @@
 //==============================================================================
 /**
 */
-class Esempio76AudioProcessorEditor  : public juce::AudioProcessorEditor, private juce::Timer
-
+class TESTAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                   private juce::Timer
 {
 public:
-    Esempio76AudioProcessorEditor (Esempio76AudioProcessor&);
-    ~Esempio76AudioProcessorEditor() override;
+    TESTAudioProcessorEditor (TESTAudioProcessor&);
+    ~TESTAudioProcessorEditor() override;
 
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
-    
-    void timerCallback() override;
 
 private:
-    //Dichiarazione oggetto slider
-    juce::Slider gainKnob;
-    //Attachment gain
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gainAttachment;
-    
-    juce::Label gainLabel;
-    juce::Label meterLabel;
-    
-    Esempio76AudioProcessor& audioProcessor;
+    // Callback del Timer: viene chiamata ogni ~30 ms per aggiornare il meter
+    void timerCallback() override;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Esempio76AudioProcessorEditor)
+    // Riferimento al processor (necessario per leggere i parametri e il livello output)
+    TESTAudioProcessor& audioProcessor;
+
+    // Knob per il controllo del Gain
+    juce::Slider gainKnob;
+    juce::Label  gainLabel;
+
+    // Attachment: collega automaticamente il Slider al parametro "gain" dell'APVTS
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> gainAttachment;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TESTAudioProcessorEditor)
 };
