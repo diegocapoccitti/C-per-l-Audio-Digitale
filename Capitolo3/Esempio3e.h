@@ -31,10 +31,10 @@ private:
 int main()
 {
     StrumentoMusicale pianoforte("Pianoforte", 88);
-    StrumentoMusicale chitarra("Chitarra", 6);
+    StrumentoMusicale synth("Sintetizzatore", 49);
     
     pianoforte.suona(); // Output: Sto suonando Pianoforte con 88 tasti.
-    chitarra.suona();  // Output: Sto suonando Chitarra con 6 tasti
+    synth.suona();  // Output: Sto suonando Sintetizzatore con 49 tasti
     
     std::cout << "Il " << pianoforte.nome << " ha " << pianoforte.numeroTasti << " tasti." << std::endl;
     std::cout << "La " << chitarra.nome << " ha " << chitarra.numeroTasti << " tasti." << std::endl;

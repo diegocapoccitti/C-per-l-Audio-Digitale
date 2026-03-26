@@ -1,13 +1,14 @@
 #include <iostream>
 
-void incrementa(int numero)
+void incrementa(int &numero)
 {
-    numero = numero +1;  // Modifica la copia, non l’originale!!
+    numero++;  // Modifica l'originale
 }
 
-int main() {
+int main()
+{
     int valore = 5;
     incrementa(valore);
-    std::cout << "Valore dopo incremento: " << valore << std::endl;  // Uscita: 5
+    std::cout << "Valore dopo incrementa: " << valore << std::endl;  // Uscita: 6
     return 0;
 }
